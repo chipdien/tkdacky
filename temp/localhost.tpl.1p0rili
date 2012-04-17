@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="vn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Đắc Kỷ Việt Nam</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" href="<?php echo  ($_BASE=F3::get('BASE')) ; ?>/gui/css/style.css" />                <!-- Common CSS Styles -->
+    <script type="text/javascript" src="<?php echo  $_BASE ; ?>/gui/js/jquery.js"></script>                <!-- JQuery v1.4.2 (Production Version) -->
+    <script type="text/javascript" src="<?php echo  $_BASE ; ?>/gui/js/modal.js"></script>                <!-- JS/JQuery Modal Dialog -->
+    <script type="text/javascript" src="<?php echo  $_BASE ; ?>/gui/js/common.js"></script>                <!-- Common JS/JQuery functions -->
+
+    
+</head> 
+<body>
+    <div id="header">
+        <h1 id="logo"><a href="<?php echo $_BASE; ?>" title="Đắc Kỷ Việt Nam">
+            <img alt="Đắc Kỷ Việt Nam" title="Đắc Kỷ Việt Nam" src="<?php echo  $_BASE ; ?>/gui/images/logo.png" style="width: 200px;"/>
+        </a></h1>
+    </div>
+    
+    <?php if (F3::get('SESSION.id')): ?>
+        
+                <div id="menubar" class="wrapper box-title"><div>
+        <ul id="mainnav">
+            <?php if (is_array(($_menu=F3::get('menu')))):foreach ((($_menu=F3::get('menu'))?:array()) as $_key=>$_option):?>
+                <li <?php echo  ($_pageTitle=F3::get('pageTitle'))==$_key?' class="active"':'' ; ?> >
+                    <a href="<?php echo  $_BASE ; ?><?php echo  $_option ; ?>" title="<?php echo  $_key ; ?>" ><?php echo  $_key ; ?></a>
+                </li>
+            <?php endforeach;endif;?>
+        </ul>
+        <div id="loginbar">
+            Chào bạn <span style="color: #fff; font-weight: bold;"><?php echo  F3::get('SESSION.usr') ; ?></span>, <a href="<?php echo $_BASE; ?>/dang-xuat" title="Đăng xuất">Đăng xuất</a>?
+        </div>
+        <div class="clear"></div>
+    </div></div> 
+                <div id="sidebar">
+        <div class="box open userbar">
+            <div class="box-title"><div>
+                Thông Tin Nhân Vật
+                <a href="#" class="box-toggle"></a>
+            </div></div>
+
+            
+            <div class="box-content">
+                <p style="width: 100%; font-size: 15px;"><strong><?php echo  F3::get('emperor.EmperorName') ; ?></strong> <span>(Lvl: <?php echo  F3::get('emperor.Level')+F3::get('emperor.TransformWorkTimes')*100 ; ?>)</span></p>
+                <p style="font-style: italic; margin-top: -10px;"><?php echo F3::get('emperor.FavorName'); ?></p>
+                
+                <p>
+                    <a href="#" title="<?php echo  F3::get('emperor.EmperorName'); ?>" class="user-avatar"><img src="http://play.dackyvn.net/res/icon/hero/<?php echo  F3::get('emperor.Gender') ; ?>/n_hero_<?php echo  F3::get('emperor.Icon'); ?>.png" title="<?php echo  F3::get('emperor.EmperorName'); ?>" alt="<?php echo  F3::get('emperor.EmperorName'); ?>" /></a>
+                    Quan Chức:<br/><strong><?php echo  F3::get('emperor.OfficialPos'); ?></strong><br/>
+                    Thanh Danh:<br/><strong><?php echo  F3::get('emperor.Reputation'); ?></strong><br/>
+                    Bang Hội:<br/><strong><?php echo  F3::get('emperor.League'); ?></strong> 
+                </p>
+                
+
+                <!--<p class="left"> </p>-->
+                <div class="clear"></div>
+                <p>
+                    
+                </p>
+                <ul class="action-links">
+                    <!--<li><a href="#" title="Edit Qwibble's profile">Messages (3)</a></li>-->
+                    <li><a href="<?php echo $_BASE; ?>/trang-ca-nhan" title="Sửa thông tin cá nhân">Sửa Thông Tin Cá Nhân</a></li>
+                    <li><a href="<?php echo $_BASE; ?>/dang-xuat" title="Đăng xuất">Đăng Xuất</a></li>
+
+                </ul>
+            </div>
+        </div>
+         
+        
+    </div>
+            <script type="text/javascript">
+{literal}
+function getItemNum(id){
+    $.get("/ajax/getItemInfo.php?view=quantity&item="+id, function(data){
+        $("#buy"+id+"_num").html(data);
+        $("#sell"+id+"_num").html(data);
+    });
+}
+    
+function buyItem(id){
+    var num = $("input[name=buy"+id+"_num").val();
+    var shop = $("input[name=buy"+id+"_mode]").val();
+    $.ajax({
+        type: "POST",
+        url: "/ajax/buyItem.php?shoptype="+shop,
+        data: "quantity="+num+"&goodsid="+id+"&submit=Mua",
+        success: function(msg){
+            var arr = msg.split("|");
+            if (arr[0] == '1'){
+                getItemNum(id);
+                $("#buy"+id+"-tips").removeClass("msg-info msg-error msg-success").addClass('msg-success');
+                $("#buy"+id+"-tips").html("<strong>Thành công:</strong> "+arr[1]+"<a href=\"#\" title=\"Remove\" class=\"remove-btn\" onclick=\"messageRemove(this)\">Xóa</a>").fadeIn('slow');	
+            } else {
+                $("#buy"+id+"-tips").removeClass("msg-info msg-error msg-success").addClass('msg-error');
+                $("#buy"+id+"-tips").html("<strong>Thất bại:</strong> "+arr[1]+"<a href=\"#\" title=\"Remove\" class=\"remove-btn\" onclick=\"messageRemove(this)\">Xóa</a>").fadeIn('slow');
+            }
+        }
+    });    
+}   
+
+function sellItem(id){
+    var num  = $("input[name=sell"+id+"_num]").val();
+    var shop = $("input[name=sell"+id+"_mode]").val();
+    $.ajax({
+        type: "POST",
+        url: "/ajax/sellItem.php?shoptype="+shop,
+        data: "quantity="+num+"&goodsid="+id+"&submit=Bán",
+        success: function(msg){
+            var arr = msg.split("|");
+            if (arr[0] == '1'){
+                getItemNum(id);
+                $("#sell"+id+"-tips").removeClass("msg-info msg-error msg-success").addClass('msg-success');
+                $("#sell"+id+"-tips").html("<strong>Thành công:</strong> "+arr[1]+"<a href=\"#\" title=\"Remove\" class=\"remove-btn\" onclick=\"messageRemove(this)\">Xóa</a>").fadeIn('slow');	
+            } else {
+                $("#sell"+id+"-tips").removeClass("msg-info msg-error msg-success").addClass('msg-error');
+                $("#sell"+id+"-tips").html("<strong>Thất bại:</strong> "+arr[1]+"<a href=\"#\" title=\"Remove\" class=\"remove-btn\" onclick=\"messageRemove(this)\">Xóa</a>").fadeIn('slow');
+            }
+        }
+    });    
+}  
+{/literal}
+</script>
+
+    <div id="contentpanel">
+        <div class="box open">
+            <div class="box-title"><div>
+                Bạn muốn mua gì?
+                <a href="#" class="box-toggle"></a>
+            </div></div>
+            
+        {if $itemToSell}
+            <div class="box-content">
+            	{foreach from=$itemToSell item=item}
+                    {assign var=payTypeId value=$item.paytype}
+                    {assign var=itemId value=$item.goodsid}
+                    
+                    <div id="buy{$itemId}" class="box_item">
+                        <div class="box_item_image">
+                            <span class='box_item_quantity item_num' id="buy{$itemId}_num" >{$playerBag.$itemId}</span>
+                            <img src='http://play.lacai.de/res/item/n_item_{$itemId}.jpg'>
+                        </div>
+                        <div class="box_item_button">
+                            <form method='post' action='/ajax/buyItem.php?type=oshop'>
+                            <input type='hidden' name='item' value='{$itemId}'  />
+                            <input type='hidden' name='buy{$itemId}_mode' value='1'  />
+                            <input type='text' name='buy{$itemId}_num' value='' style='width: 36px; background: {if $item.quantity == 0}#ccc{else}#fff{/if};'/>
+                            <br/>
+                            <input id="buy{$itemId}_button" type='submit' name='submit' style='width: 52px; margin-top: 2px;' value='Mua' onclick="javascript:buyItem({$itemId});return false;" />
+                            </form>
+                        </div>
+                        <div class="box_item_desc">
+                            <h2>{$item.goodsname}</h2>
+                            <p>01 {$item.goodsname} có giá là {$item.price} {$payType.$payTypeId}.</p>
+                        </div>
+                        <p id="buy{$itemId}-tips" class="msg-info" style="clear: both; margin-right: 18px; display:none;"><a href="#" title="Remove" class="remove-btn">&nbsp;</a></p>
+                    </div>
+                {/foreach}
+                <div style="clear: both;"></div>
+                <p class="msg-info"><strong>Chú ý:</strong> trước khi click vào nút <strong>ĐỔI</strong>, các thành chủ <strong>bắt buộc phải out khỏi game</strong>!</p>
+            </div>
+        {else}
+            <div class="box-content">
+                <p class="msg-info">Xin lỗi, hiện Trụ Vương không thiếu thốn gì, nên không cần mua vật phẩm gì từ quý thành chủ!</p>
+            </div>
+        {/if}        
+        </div>
+        
+        <div class="box open">
+            <div class="box-title"><div>
+                Bạn muốn bán vật phẩm gì?
+                <a href="#" class="box-toggle"></a>
+            </div></div>
+            
+        {if $itemToBuy}
+            <div class="box-content">
+            	{foreach from=$itemToBuy item=item}
+                    {assign var=payTypeId value=$item.paytype}
+                    {assign var=itemId value=$item.goodsid}
+                    
+                    <div id="sell{$itemId}" class="box_item">
+                        <div class="box_item_image">
+                            <span class='box_item_quantity item_num' id="sell{$itemId}_num" >{$playerBag.$itemId}</span>
+                            <img src='http://play.lacai.de/res/item/n_item_{$itemId}.jpg'>
+                        </div>
+                        <div class="box_item_button">
+                            <form method='post' action='/ajax/buyItem.php?type=oshop'>
+                            <input type='hidden' name='item' value='{$itemId}'  />
+                            <input type='hidden' name='sell{$itemId}_mode' value='1'  />
+                            <input type='text' name='sell{$itemId}_num' value='' style='width: 36px; background: {if $item.quantity == 0}#ccc{else}#fff{/if};'/>
+                            <br/>
+                            <input id="sell{$itemId}_button" type='submit' name='submit' style='width: 52px; margin-top: 2px;' value='Bán' onclick="javascript:sellItem({$itemId});return false;" />
+                            </form>
+                        </div>
+                        <div class="box_item_desc">
+                            <h2>{$item.goodsname}</h2>
+                            <p>01 {$item.goodsname} có giá là {$item.price} {$payType.$payTypeId}.</p>
+                        </div>
+                        <p id="sell{$itemId}-tips" class="msg-info" style="clear: both; margin-right: 18px; display:none;"><a href="#" title="Remove" class="remove-btn">&nbsp;</a></p>
+                    </div>
+                {/foreach}
+                <div style="clear: both;"></div>
+                <p class="msg-info"><strong>Chú ý:</strong> trước khi click vào nút <strong>ĐỔI</strong>, các thành chủ <strong>bắt buộc phải out khỏi game</strong>!</p>
+            </div>
+        {else}
+            <div class="box-content">
+                <p class="msg-info">Xin lỗi, hiện Trụ Vương không thiếu thốn gì, nên không cần mua vật phẩm gì từ quý thành chủ!</p>
+            </div>
+        {/if}        
+        </div>
+    </div>
+    <div class="clear"></div>
+    
+	
+	<?php else: ?>
+            <form name="login" method="post" action="<?php echo  $_BASE ; ?>/dang-nhap" >
+    <div id="login">
+        <h2>Đăng Nhập</h2>
+        
+        <?php if (($_message=F3::get('message'))): ?>
+            <p class="msg-error"><?php echo  $_message ; ?></p>
+	<?php endif; ?>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" >
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" >
+        <label><input type="checkbox" value="1" checked="checked" id="rememberMe" name="rememberMe"> &nbsp;Ghi nhớ</label>
+        <input type="submit" value="Đăng Nhập" name="submit" >
+        <div class="clear"></div>
+    </div>
+</form>
+	
+    <?php endif; ?>
+
+    <div style="clear:both;"></div>
+    
+    
+    <div id="footer"><?php echo F3::get('SESSION.id'); ?> &copy; <strong>Đắc Kỷ Việt Nam</strong> 2011. All rights reserved!</div>
+
+    <!-- Modal Dialog Example -->  
+    <div id="modal" class="modal-container">
+        <h2>Pop Up Example</h2>
+        <p>This is a pop up example. Arcu magna vulputate nunc, at sollicitudin enim mi molestie massa.</p>
+        <h2>Content</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu auctor neque. Arcu magna vulputate nunc, at sollicitudin enim mi molestie massa. Ut quis urna elit, ac ultrices nisl. Donec placerat blandit nunc nec ultricies.</p>
+        <h2>Form Example</h2>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" />
+        <label for="password">Password:</label>
+        <input type="text" id="password" />
+        <input type="submit" value="Submit" />
+        <div class="clear"></div>
+    </div>
+    <div id="mask"></div>
+    <!-- End of Modal Dialog Example -->
+</body>
+
+</html>

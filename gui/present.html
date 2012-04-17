@@ -1,0 +1,54 @@
+<script type="text/javascript">
+$(document).ready(function(){  
+    $("#pOfficial_get").click(function(){
+        $("#pOfficial_loading").show();
+        $.get("{{@BASE}}/nhan-thuong/qua-tang-quan-chuc", function(data){
+            $("#pOfficial-tips").removeClass("msg-info msg-error msg-success").addClass('msg-'+data.status);
+            $("#pOfficial-tips").html(data.msg+"<a href=\"#\" title=\"Remove\" class=\"remove-btn\" onclick=\"messageRemove(this)\">Xóa</a>").fadeIn('slow');	
+            if(data.status == 'success') $("#pOfficial_get").remove();   
+            $("#pOfficial_loading").hide();
+    	}, "json");
+        return false;
+    });    
+});
+</script>
+
+<div id="contentpanel">
+    <div class="box open">
+        <div class="box-title"><div>
+            Phần Thưởng Quan Chức
+            <a href="#" class="box-toggle"></a>
+        </div></div>
+
+        <div class="box-content">
+            <p id="pOfficial-tips" class="msg-info" style="display: none;"><a href="#" title="Remove" class="remove-btn">Xóa</a></p>
+            
+            <p>Bạn đã nhận thưởng đến chức quan: <strong>{{@Present.rewardedTitle}}</strong></p>  
+            <F3:check if="{{ @Present.rewardMoney == '0' }}">
+                <F3:true>
+                    <p>Hiện tại bạn đã nhận hết quà, xin hãy quay lại sau khi thăng quan lên chức <b>{{@Present.nextTitle}}</b>!</p>         
+                </F3:true>
+                <F3:false>
+                    <p>Bạn có thể nhận phần thưởng của các chức quan khác là</p>
+                    <ul>
+                    <F3:repeat group="{{@Present.list}}" key="{{@ikey}}" value="{{@ival}}">
+                        <li>Chức <strong>{{@ikey}}</strong> được thưởng <strong>{{@ival}}</strong> xu</li>
+                    </F3:repeat>
+                    </ul>
+                    <p>Tổng cộng, bạn sẽ nhận được phần quà là <strong>{{@Present.rewardMoney}}</strong> xu</p>
+                    <p class="button" style="width: 75px; float:left;" id="pOfficial_get"><a href="#">Nhận Quà</a></p>
+                    <span id="pOfficial_loading" class="loading_img"><img src="{{@BASE}}/gui/images/loading.gif"></span>
+                    <div class="clear"></div>
+                    
+                </F3:false>
+            </F3:check>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+
+
+    
+    
+            

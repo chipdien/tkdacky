@@ -1,0 +1,674 @@
+/********** Default (Resets) **********/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td
+table, table tr td, table tr th {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	border-collapse: collapse;
+}
+img, a img, :link img, :visited img { border: none; }
+ol, ul {
+	list-style: none;
+}
+
+#contentpanel li:before { content: "\2714\A0\A0";}
+
+:focus {
+	outline: 0;
+}
+/********** End of Default **********/
+
+/********** Global Styles **********/
+body {
+	margin: 0 auto;
+	width: 1000px;
+	background: #eaeaea;
+	color: #282828;
+	font: 12px/20px Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+table, input, select, textarea {
+	color: #282828;
+	font: 12px/18px Arial, Helvetica Neue, Helvetica, sans-serif;
+}
+a, a:link, a:visited {
+	color: #a3b260;
+	text-decoration: none;
+}
+	a:hover {
+		color: #c4d47e;
+	}
+h2 {
+	margin: 0 0 5px;
+	font-size: 12px;
+}
+p {
+	margin-bottom: 10px;
+    margin-top: 10px;
+}
+select {
+	padding: 7px 7px 5px;
+	width: 732px;
+	background: #eaeaea;
+	border: 1px solid #8c8c8c;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+	option {
+		padding: 2px 5px;
+	}
+input[type=text], input[type=password] {
+	padding: 7px;
+	width: 732px;
+	background: #eaeaea;
+	border: 1px solid #8c8c8c;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+	input[type=text]:hover, input[type=text]:focus, input[type=password]:hover, input[type=password]:focus {
+		background: #efefef;
+	}
+input[type=button], input[type=submit], input[type=reset] {
+	margin: 8px 2px 0 0;
+	padding: 0 15px;
+	text-transform: uppercase;
+	height: 28px;
+	background: #a3b260;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	border: 1px solid #7e894a;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+	input[type=button]:hover, input[type=submit]:hover, .button:hover {
+		background: #7e894a;
+	}
+input[type=reset] {
+	background: #37302b;
+	border: 1px solid #1e1a18;
+}
+	input[type=reset]:hover {
+		background: #1e1a18;
+	}
+textarea {
+	padding: 7px;
+	width: 732px;
+	height: 157px;
+	background: #eaeaea;
+	border: 1px solid #8c8c8c;
+	overflow-y: hidden;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+	textarea:hover, textarea:focus {
+		background: #efefef;
+	}
+label {
+	cursor: pointer;
+}
+.text-left     { text-align: left; }
+.text-right    { text-align: right; }
+.text-center   { text-align: center; }
+.text-justify  { text-align: justify; }
+.left 		   { float: left; }
+.right		   { float: right; }
+.center		   { margin: 0 auto; }
+.clear {
+	display: block;
+	clear: both;
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+	font-size: 1px;
+}
+.box {
+	margin-top: 10px;
+}
+	.box-title {
+		margin-bottom: 4px;
+		padding: 1px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		background: #1e1a18;
+		color: #fff; /*#94918f;*/
+	}
+		.box-title div:first-child {
+			padding: 0 17px;
+			height: 35px;
+			line-height: 35px;
+			background: #322c27;
+			border: 1px solid #61554e;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			position: relative;
+		}
+			.box .box-toggle {
+				position: absolute;
+				top: 17px;
+				right: 15px;
+				width: 5px;
+				height: 3px;
+				background: url('../images/box-open.gif') no-repeat;
+			}
+			.box.closed .box-toggle {
+				top: 13px;
+				height: 10px;
+				background: url('../images/box-closed.gif') no-repeat;
+			}
+	.box.closed .box-content {
+		display: none;
+	}
+	#contentpanel .box .box-content { position: relative; } /* IE Hack */
+.box.width-45 {
+	float: left;
+	width: 355px;
+}
+	.box.width-45 input[type=text], .box.width-45 input[type=password], .box.width-45 textarea {
+		width: 295px;
+	}
+	.box.width-45 select {
+		width: 311px;
+	}
+	.box.width-45 .box-content { width: 313px; } /* IE Hack */
+.box.width-55 {
+	float: left;
+	width: 422px;
+}
+	.box.width-55 input[type=text], .box.width-55 input[type=password], .box.width-55 textarea {
+		width: 362px;
+	}
+	.box.width-55 select {
+		width: 378px;
+	}
+	.box.width-55 .box-content { width: 380px; } /* IE Hack */
+.box.width-45.right { float: right; }
+.box.width-55.right { float: right; }
+.col-45 { margin-bottom: 20px; width: 45%; }
+/********** End of Global Styles **********/
+
+/********** Messages **********/
+.msg-error, .msg-success, .msg-attention, .msg-info {
+	padding-left: 17px;
+	/*height: 30px;*/
+	line-height: 30px;
+	position: relative;
+    padding-right: 20px;
+}
+	.remove-btn {
+		position: absolute;
+		top: 0;
+		right: 10px; /*17px*/
+		padding-right: 20px;
+		background: url('../images/remove-btn.png') no-repeat center right;
+		color: #333 !important;
+	}
+		.remove-btn:hover {
+			color: #666 !important;
+		}
+.msg-error {
+	background: #f0cec4;
+	color: #a24057;
+	border: 1px solid #a24057;
+}
+.msg-success {
+	background: #eaf8d5;
+	color: #829b36;
+	border: 1px solid #829b36;
+}
+.msg-attention {
+	background: #fffbcc;
+	color: #c0a443;
+	border: 1px solid #c0a443;
+}
+.msg-info {
+	background: #d2eef1;
+	color: #369fb4;
+	border: 1px solid #369fb4;
+}
+/********** End of Messages **********/
+
+/********** Site Skeleton **********/
+#menubar {
+	margin: -7px 0 4px;
+}
+#sidebar {
+	float: left;
+	width: 200px;
+}
+#contentpanel {
+	float: right;
+	width: 790px;
+}
+#footer {
+	margin: 25px 0;
+	padding-top: 20px;
+	text-align: right;
+	border-top: 1px solid #ddd;
+}
+/********** End of Site Skeleton **********/
+
+/********** Header **********/
+#logo {
+	/*padding: 45px;*/
+}
+/********** End of Header **********/
+
+/********** Menubar **********/
+#menubar div:first-child {
+	padding: 0 17px;
+	height: 44px;
+	line-height: 18px;
+	font-size: 13px;
+}
+	#mainnav {
+		float: left;
+	}
+		#mainnav {
+			padding: 2px 0;
+		}
+			#mainnav li {
+				float: left;
+				margin: 2px 5px 0 0;
+				padding: 8px 15px;
+			}
+				#mainnav a {
+					color: #fff; /*#7f746d;*/
+				}
+					#mainnav a:hover, #mainnav .active a {
+						color: #fff;
+					}
+			#mainnav .active { 
+				background: #a3b260;
+				border: 1px solid #bfd172;
+				-moz-border-radius: 3px;
+				-webkit-border-radius: 3px;
+			}
+	#loginbar {
+		float: right;
+		height: 44px;
+		line-height: 44px;
+		color: #7f746d;
+	}
+/********** End of Menubar **********/
+
+/********** Sidebar Modules **********/
+#sidebar .box {
+	margin-top: 20px;
+}
+	#sidebar .box-title {
+		margin-bottom: 10px;
+	}
+#sidebar .box:first-child {
+	margin-top: 10px;
+}
+#sidebar .box.closed {
+	margin-bottom: -10px;
+}
+#sidebar .userbar {
+	color: #505050;
+}
+	#sidebar .user-avatar {
+		float: left;
+        margin-top: 5px;
+		margin-right: 10px;
+		border: 3px solid #fff;
+	}
+		#sidebar .user-avatar:hover {
+			border: 3px solid #ddd;
+		}
+		#sidebar .user-avatar img {
+			float: left;
+		}
+	#sidebar .userbar .left {
+		margin-bottom: 12px;
+	}
+	#sidebar .userbar span {
+		color: #94918f;
+	}
+	#sidebar .action-links li {
+		display: inline;
+		padding: 0 2px 0 5px;
+		line-height: 12px;
+		font-size: 11px;
+		border-left: 1px solid #bbb;
+	}
+		#sidebar .action-links a {
+			color: #7e894a;	
+		}
+			#sidebar .action-links a:hover {
+				color: #555;	
+			}
+	#sidebar .action-links li:first-child {
+		padding-left: 0;
+		border: 0;
+	}
+#sidebar ul.box-content {
+	margin-top: -5px;
+}
+	#sidebar ul.box-content li {
+		padding: 0 19px;
+		height: 25px;
+		line-height: 25px;
+	}
+		#sidebar ul.box-content a {
+			color: #4c413a;
+		}
+			#sidebar ul.box-content a:hover {
+				color: #7e894a;
+			}
+	#sidebar ul.box-content li.active {
+		background: #a3b260;
+		border: 1px solid #7e894a;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+	}
+		#sidebar ul.box-content li.active a {
+			color: #fff;
+		}
+#sidebar .calendar .top {
+	padding: 0 10px;
+	text-transform: uppercase;
+}
+	#sidebar .calendar .top .current-month {
+		float: left;
+		margin-left: 32px;
+		text-transform: none;
+	}
+#sidebar .calendar table {
+	margin: 7px auto 0;
+	width: 185px;
+}
+	#sidebar .calendar table th {
+		padding: 4px 0;
+		background: #a3b260;
+		color: #fff;
+	}
+	#sidebar .calendar table td {
+		padding: 3px;
+		text-align: center;
+	}
+	#sidebar .calendar table td.another-month {
+		color: #aaa;
+	}
+	#sidebar .calendar table td.current {
+		background: #2d2824;
+		color: #fff;
+	}
+/********** End of Sidebar Modules **********/
+
+/********** Contentpanel Modules **********/
+#contentpanel .box-content {
+	padding: 20px 20px;
+	border: 1px solid #8c8c8c;
+        margin-bottom: 10px;
+}
+	#contentpanel .hint {
+		display: block;
+		padding-top: 5px;
+		color: #868686;
+	}
+#contentpanel .tabular-view {
+	padding: 0;
+}
+	#contentpanel table {
+		width: 100%;
+	}
+		#contentpanel table th {
+			text-align: left;
+			padding: 10px 25px;
+			background: #dedede;
+			border-bottom: 1px solid #8c8c8c;
+		}
+		#contentpanel table td {
+			padding: 15px 25px;
+			border-top: 1px solid #ddd;
+			border-bottom: 1px solid #dedede;
+		}
+		#contentpanel table .even td {
+			background: #efefef;
+		}
+		#contentpanel tr:last-child td { border: 0; }
+#contentpanel .settings {
+	color: #626262;
+}
+		#contentpanel .settings .labels {
+			float: left;
+			padding-top: 6px;
+			width: 145px;
+		}
+		#contentpanel .settings .inputs {
+			float: left;
+			margin-bottom: 15px;
+			width: 260px;
+		}
+			#contentpanel .settings .inputs input[type=text], #contentpanel .settings .inputs input[type=password], #contentpanel .settings .inputs select {
+				padding: 6px 7px;
+				width: 250px;
+				background: #f7f7f7;
+				color: #626262;
+				border: 1px solid #aaaaaa;
+			}
+				#contentpanel .settings .inputs input[type=text]:hover, #contentpanel .settings .inputs input[type=password]:hover, #contentpanel .settings .inputs select:hover, #contentpanel .settings .inputs input[type=text]:focus, #contentpanel .settings .inputs input[type=password]:focus, #contentpanel .settings .inputs select:focus {
+					border: 1px solid #909090;
+				}
+			#contentpanel .settings .inputs select {
+				width: 266px;
+				height: 31px;
+				line-height: 31px;
+			}
+		#contentpanel .settings .hints {
+			float: right;
+			padding-top: 10px;
+			line-height: 14px;
+			width: 320px;
+			color: #a4a4a4;
+			font-size: 11px;
+		}
+		#contentpanel .padding {
+			padding-top: 4px;
+		}
+			#contentpanel .padding input {
+				position: relative;
+				top: 2px;
+			}
+		#contentpanel .settings .inputs.radio-list {
+			padding-top: 9px;
+			line-height: 23px;
+		}
+			#contentpanel .settings .inputs input[type=text].custom, #contentpanel .settings .inputs input[type=password].custom {
+				margin-left: 7px;
+				padding: 4px 7px;
+				width: 40px;
+			}
+#contentpanel .gallery ul {
+	padding: 2px;
+	height: 87px;
+}
+	#contentpanel .gallery li {
+		float: left;
+		margin: 5px;
+		padding: 2px;
+		border: 1px solid #aaa;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		position: relative;
+	}
+		#contentpanel .gallery li img {
+			float: left;
+		}
+		#contentpanel .gallery li .gallery-actions {
+			display: none;
+			position: absolute;
+			top: 13px;
+			left: 11px;
+			width: 51px;
+			background: #585858;
+			border: 1px solid #1f1f1f;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+		}
+			#contentpanel .gallery li .gallery-actions a {
+				display: block;
+				height: 23px;
+				line-height: 23px;
+				text-transform: uppercase;
+				color: #999;
+				font-size: 10px;
+				text-align: center;
+				border-top: 1px solid #1f1f1f;
+			}
+				#contentpanel .gallery li .gallery-actions a:hover {
+					background: #e9683e;
+					color: #fff;
+				}
+			#contentpanel .gallery li .gallery-actions a:first-child {
+				border-top: 0;
+			}
+		#contentpanel .gallery li:hover .gallery-actions {
+			display: block;
+		}
+#contentpanel .new-media {
+	color: #626262;
+}
+	#contentpanel .new-media input[type=button] {
+		margin-left: 1px;
+		padding: 0 7px;
+		height: 25px;
+		line-height: 25px;
+		background: #dedede;
+		color: #626262;
+		text-transform: none;
+		font-weight: normal;
+		border: 1px solid #aaa;
+		-moz-border-radius: 12px;
+		-webkit-border-radius: 12px;
+	}
+	#contentpanel .new-media input[type=button]:first-child {
+		margin-left: 12px;
+	}
+	#contentpanel .new-media input[type=button].inactive {
+		background: #e3e3e3;
+		color: #a2a2a2;
+		border: 1px solid #cacaca;
+	}
+/********** End of Contentpanel Modules **********/
+
+/********** Login **********/
+#login {
+	margin: 40px auto;
+	padding: 25px;
+	width: 255px;
+	background: #fff;
+	border: 7px solid #ccc;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	#login h2 {
+		padding-bottom: 5px;
+		margin-bottom: 20px;
+		font-size: 18px;
+		font-weight: normal;
+		border-bottom: 1px solid #ddd;
+	}
+	#login label {
+		color: #7a7a7a;
+		font-weight: bold;
+	}
+	#login input[type=text], #login input[type=password] {
+		margin: 5px 0 10px;
+		width: 241px;
+		background: #f8f8f8;
+		border: 1px solid #aaa;
+	}
+	#login p {
+		margin: 10px 0 5px;
+	}
+	#login input[type=submit] {
+		float: right;
+	}
+/********** End of Login **********/
+
+/********** Modal **********/
+#mask {
+  display:none;
+  position:absolute;
+  top:0;
+  left:0;
+  background: url('../images/mask.gif');
+  z-index:9000;
+}
+.modal-container {
+  display:none;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:9999;
+}
+#modal {
+	margin: 40px auto;
+	padding: 25px;
+	width: 255px;
+	background: #fff;
+	border: 7px solid #ccc;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	#modal h2 {
+		padding-bottom: 5px;
+		font-size: 18px;
+		font-weight: normal;
+		border-bottom: 1px solid #ddd;
+	}
+	#modal label {
+		color: #7a7a7a;
+		font-weight: bold;
+	}
+	#modal input[type=text], #modal input[type=password] {
+		margin: 5px 0 10px;
+		width: 241px;
+		background: #f8f8f8;
+		border: 1px solid #aaa;
+	}
+/********** End of Modal **********/
+
+p.button {
+    margin: 8px 2px 0 0;
+    padding: 3px 15px 0;
+    text-transform: uppercase;
+    height: 22px;
+    background: #a3b260;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #7e894a;
+    text-align: center;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+p.button a, p.button a:active, p.button a:hover, p.button a:visited {
+    color: #fff;
+}
+
+
+#email_loading, #password_loading, #emperorname_loading {float: right; margin-right: 582px; margin-top: 8px; display: none;}
+#pOfficial_loading {float:right; display: none; margin-right: 615px; margin-top: 7px;}
+.loading_img {display: none; }
+.loading_img img {width: 27px; margin-left: 5px; margin-top: 8px;}
+
+
+/*** SHOP ***/
+.box_item {float: left; width: 374px; }
+.box_item_image {width: 70px; float: left;}
+.box_item_quantity {position: absolute; color: rgb(255, 255, 255); margin-top: 37px; float: right; text-align: right; margin-right: 3px; width: 58px; font-weight: bold;}
+.box_item_desc {float: right; width: 230px;}
+.box_item_button {float: right; margin-right: 20px; width: 50px; margin-bottom: 5px;}

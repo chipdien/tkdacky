@@ -1,0 +1,17 @@
+<form name="login" method="post" action="{{ @BASE }}/dang-nhap" >
+    <div id="login">
+        <h2>Đăng Nhập</h2>
+        
+        <F3:check if="{{ @message }}">
+            <p class="msg-error">{{ @message }}</p>
+	</F3:check>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" >
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" >
+        <label><input type="checkbox" value="1" checked="checked" id="rememberMe" name="rememberMe"> &nbsp;Ghi nhớ</label>
+        <input type="submit" value="Đăng Nhập" name="submit" >
+        <div class="clear"></div>
+    </div>
+</form>

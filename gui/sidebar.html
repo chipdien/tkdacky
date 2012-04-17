@@ -1,0 +1,52 @@
+    <div id="sidebar">
+        <div class="box open userbar">
+            <div class="box-title"><div>
+                Thông Tin Nhân Vật
+                <a href="#" class="box-toggle"></a>
+            </div></div>
+
+            
+            <div class="box-content">
+                <p style="width: 100%; font-size: 15px;"><strong>{{ @emperor.EmperorName }}</strong> <span>(Lvl: {{ @emperor.Level+@emperor.TransformWorkTimes*100 }})</span></p>
+                <p style="font-style: italic; margin-top: -10px;">{{@emperor.FavorName}}</p>
+                
+                <p>
+                    <a href="#" title="{{ @emperor.EmperorName}}" class="user-avatar"><img src="http://play.dackyvn.net/res/icon/hero/{{ @emperor.Gender }}/n_hero_{{ @emperor.Icon}}.png" title="{{ @emperor.EmperorName}}" alt="{{ @emperor.EmperorName}}" /></a>
+                    Quan Chức:<br/><strong>{{ @emperor.OfficialPos}}</strong><br/>
+                    Thanh Danh:<br/><strong>{{ @emperor.Reputation}}</strong><br/>
+                    Bang Hội:<br/><strong>{{ @emperor.League}}</strong> 
+                </p>
+                
+
+                <!--<p class="left"> </p>-->
+                <div class="clear"></div>
+                <p>
+                    
+                </p>
+                <ul class="action-links">
+                    <!--<li><a href="#" title="Edit Qwibble's profile">Messages (3)</a></li>-->
+                    <li><a href="{{@BASE}}/trang-ca-nhan" title="Sửa thông tin cá nhân">Sửa Thông Tin Cá Nhân</a></li>
+                    <li><a href="{{@BASE}}/dang-xuat" title="Đăng xuất">Đăng Xuất</a></li>
+
+                </ul>
+            </div>
+        </div>
+  {{*      
+        {block name="hook_sidebar"}{/block}
+        
+        {if $hook_sidebar}
+            {foreach from=$hook_sidebar item="group"}
+                 <div class="box open">
+                    <div class="box-title"><div>{{ @group.title}<a href="#" class="box-toggle"></a></div></div>
+                    <ul class="box-content">
+                        {foreach from=$group.body item="link"}
+                            {assign var="urltype" value=$link.type }
+                            <li {if $smarty.get.$urltype == $link.name} class="active"{/if}><a href="?{{ @urltype}={{ @link.name}" class="">{{ @link.title}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            {/foreach}
+        {/if}
+ *}}       
+        
+    </div>

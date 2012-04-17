@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="vn">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Đắc Kỷ Việt Nam</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" type="text/css" href="{{ @BASE }}/gui/css/style.css" />                <!-- Common CSS Styles -->
+    <script type="text/javascript" src="{{ @BASE }}/gui/js/jquery.js"></script>                <!-- JQuery v1.4.2 (Production Version) -->
+    <script type="text/javascript" src="{{ @BASE }}/gui/js/modal.js"></script>                <!-- JS/JQuery Modal Dialog -->
+    <script type="text/javascript" src="{{ @BASE }}/gui/js/common.js"></script>                <!-- Common JS/JQuery functions -->
+
+    
+</head> 
+<body>
+    <div id="header">
+        <h1 id="logo"><a href="{{@BASE}}" title="Đắc Kỷ Việt Nam">
+            <img alt="Đắc Kỷ Việt Nam" title="Đắc Kỷ Việt Nam" src="{{ @BASE }}/gui/images/logo.png" style="width: 200px;"/>
+        </a></h1>
+    </div>
+    
+    <F3:check if="{{ @SESSION.id }}">
+        <F3:true>
+            <F3:include href="nav.html"/>
+            <F3:include href="sidebar.html"/>
+            <F3:include href="{{ @template }}.html"/>
+	</F3:true>
+	<F3:false>
+            <F3:include href="login.html"/>
+	</F3:false>
+    </F3:check>
+
+    <div style="clear:both;"></div>
+    
+    
+    <div id="footer"> &copy; <strong>Đắc Kỷ Việt Nam</strong> 2011. All rights reserved!</div>
+
+    <!-- Modal Dialog Example -->  
+    <div id="modal" class="modal-container">
+        <h2>Pop Up Example</h2>
+        <p>This is a pop up example. Arcu magna vulputate nunc, at sollicitudin enim mi molestie massa.</p>
+        <h2>Content</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu auctor neque. Arcu magna vulputate nunc, at sollicitudin enim mi molestie massa. Ut quis urna elit, ac ultrices nisl. Donec placerat blandit nunc nec ultricies.</p>
+        <h2>Form Example</h2>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" />
+        <label for="password">Password:</label>
+        <input type="text" id="password" />
+        <input type="submit" value="Submit" />
+        <div class="clear"></div>
+    </div>
+    <div id="mask"></div>
+    <!-- End of Modal Dialog Example -->
+</body>
+
+</html>
